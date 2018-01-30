@@ -1,0 +1,11 @@
+/Users/michaeltimbes/Projects/Demo/Demo/bin/Debug/netcoreapp2.0/Demo.deps.json
+/Users/michaeltimbes/Projects/Demo/Demo/bin/Debug/netcoreapp2.0/Demo.runtimeconfig.json
+/Users/michaeltimbes/Projects/Demo/Demo/bin/Debug/netcoreapp2.0/Demo.runtimeconfig.dev.json
+/Users/michaeltimbes/Projects/Demo/Demo/bin/Debug/netcoreapp2.0/Demo.dll
+/Users/michaeltimbes/Projects/Demo/Demo/bin/Debug/netcoreapp2.0/Demo.pdb
+/Users/michaeltimbes/Projects/Demo/Demo/obj/Debug/netcoreapp2.0/Demo.csprojResolveAssemblyReference.cache
+/Users/michaeltimbes/Projects/Demo/Demo/obj/Debug/netcoreapp2.0/Demo.csproj.CoreCompileInputs.cache
+/Users/michaeltimbes/Projects/Demo/Demo/obj/Debug/netcoreapp2.0/Demo.AssemblyInfoInputs.cache
+/Users/michaeltimbes/Projects/Demo/Demo/obj/Debug/netcoreapp2.0/Demo.AssemblyInfo.cs
+/Users/michaeltimbes/Projects/Demo/Demo/obj/Debug/netcoreapp2.0/Demo.dll
+/Users/michaeltimbes/Projects/Demo/Demo/obj/Debug/netcoreapp2.0/Demo.pdb

@@ -1,0 +1,24 @@
+﻿@model Demo.Models.UserModel
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<h1>User Login</h1>
+<center>
+<form>
+  <strong>User Name:</strong> <br>
+  <!--<input type="text" name="User_Name">-->
+   @Html.TextBoxFor(u => u.User_Name)
+   @Html.ValidationMessageFor(u => u.User_Name)
+  <br>
+  <strong> Password: </strong> <br>
+  <!--<input type="text" name="User_Password">-->
+  @Html.PasswordFor(u => u.User_Password)
+  @Html.ValidationMessageFor(u => u.User_Password)
+  <br><br>
+   <div class="btn-group">
+        <button type="submit" asp-area="" asp-controller="User" asp-action="UserHome">Login </button>
+        <a asp-area="" asp-controller="User" asp-action="Create">Create </a>
+   </div>
+</form> 
+</center>

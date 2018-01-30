@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{66E0A366-7727-46C4-9B1F-07A150C646B1}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Demo/Views/User/UserNotFound.cshtml">
+    <Files>
+      <File FileName="Demo/Models/UserContext.cs" Line="1" Column="1" />
+      <File FileName="Demo/Views/Home/LogIn.cshtml" Line="24" Column="10" />
+      <File FileName="Demo/Controllers/UserController.cs" Line="42" Column="57" />
+      <File FileName="Demo/Models/UserModel.cs" Line="12" Column="9" />
+      <File FileName="Demo/Views/Home/Index.cshtml" Line="1" Column="1" />
+      <File FileName="Demo/Views/Shared/_Layout.cshtml" Line="1" Column="1" />
+      <File FileName="Demo/Views/User/Edit.cshtml" Line="1" Column="29" />
+      <File FileName="Demo/Views/User/Create.cshtml" Line="4" Column="34" />
+      <File FileName="Demo/Views/User/UserHome.cshtml" Line="9" Column="67" />
+      <File FileName="Demo/Views/User/Details.cshtml" Line="17" Column="55" />
+      <File FileName="Demo/Views/User/UserNotFound.cshtml" Line="7" Column="37" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Demo PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

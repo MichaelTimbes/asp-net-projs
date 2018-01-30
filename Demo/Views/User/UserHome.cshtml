@@ -1,0 +1,9 @@
+﻿@model Demo.Models.UserModel
+@{
+    ViewData["Title"] = "User Home";
+    Layout = "_Layout2";
+}
+
+<h2>User Home</h2>
+<br>
+<p>@ViewData["Message"] @Html.DisplayFor(model => model.User_Name)</p>

@@ -1,0 +1,25 @@
+﻿@model Demo.Models.UserModel
+@{
+    ViewData["Title"] = "User Not Found Page";
+}
+
+<h1>User Login</h1>
+<h2 style="background-color:Tomato;">User Not Found.. Try Again.</h2>
+<center>
+<form>
+  <strong>User Name:</strong> <br>
+  <!--<input type="text" name="User_Name">-->
+   @Html.TextBoxFor(u => u.User_Name)
+   @Html.ValidationMessageFor(u => u.User_Name)
+  <br>
+  <strong> Password: </strong> <br>
+  <!--<input type="text" name="User_Password">-->
+  @Html.PasswordFor(u => u.User_Password)
+  @Html.ValidationMessageFor(u => u.User_Password)
+  <br><br>
+   <div class="btn-group">
+        <button type="submit" asp-area="" asp-controller="User" asp-action="UserHome">Login </button>
+        <a asp-area="" asp-controller="User" asp-action="Create">Create </a>
+   </div>
+</form> 
+</center>
