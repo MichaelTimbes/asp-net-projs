@@ -29961,11 +29961,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/michaeltimbes/Projects/Demo/Demo/Demo.csproj",
+      "projectUniqueName": "/Users/michaeltimbes/Projects/asp-net-projs/User_Login_Asp/Demo/Demo.csproj",
       "projectName": "Demo",
-      "projectPath": "/Users/michaeltimbes/Projects/Demo/Demo/Demo.csproj",
+      "projectPath": "/Users/michaeltimbes/Projects/asp-net-projs/User_Login_Asp/Demo/Demo.csproj",
       "packagesPath": "/Users/michaeltimbes/.nuget/packages/",
-      "outputPath": "/Users/michaeltimbes/Projects/Demo/Demo/obj",
+      "outputPath": "/Users/michaeltimbes/Projects/asp-net-projs/User_Login_Asp/Demo/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

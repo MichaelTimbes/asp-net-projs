@@ -24,16 +24,16 @@ namespace Demo.Controllers
             return View(await _context.UserModel.ToListAsync());
         }
 
-        // GET: User/UserHome/?
+        // GET: User/UserHome/?User_Name=&User_Password=
+        // Used at LogIn Screen, LINQ on User_Name and User_Password
         public IActionResult UserHome(string User_Name, string User_Password)
         {
             var userModel = from value_ in _context.UserModel select value_;
 
             if(!String.IsNullOrEmpty(User_Name) && !String.IsNullOrEmpty(User_Password))
             {
-                userModel = userModel.Where(s => s.User_Name.Contains(User_Name) && s.User_Password.Equals(User_Password));
-                //userModel = userModel.Where(s => s.User_Password.Equals(User_Password));
-                //User = User.Where(s => s.User_Password.Contains(User_Password));
+                userModel = userModel.Where(s => s.User_Name.Contains(User_Name) && 
+                                            s.User_Password.Equals(User_Password));
             }
             if(userModel.Count() == 0){
                 
@@ -42,15 +42,16 @@ namespace Demo.Controllers
                 return RedirectToAction("UserNotFound");
             }
             ViewData["Message"] = "Hello";
+
             return View(userModel.First());
         }
-
+        //GET User/UserNotFound/?
         public IActionResult UserNotFound()
         {
             return View();
         }
 
-        // GET: User/Details/5
+        // GET: User/Details/?
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -91,6 +92,7 @@ namespace Demo.Controllers
         }
 
         // GET: User/Edit/5
+        // Action to Pull User ID Data from HTML Element
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -136,7 +138,7 @@ namespace Demo.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(UserHome));
             }
             return View(userModel);
         }

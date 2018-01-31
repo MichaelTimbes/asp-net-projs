@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model Demo.Models.UserModel
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -30,11 +31,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="User" asp-action="Edit">Edit Account</a></li>
+                    <li><a asp-area="" asp-controller="User" asp-action="UserHome" asp-route-id="@Model.ID">Home</a></li>
+                    <li><a asp-area="" asp-controller="User" asp-action="Details" asp-route-id="@Model.ID">Account</a></li>
+                    <li><a asp-area="" asp-controller="User" asp-action="Edit" asp-route-id="@Model.ID"> Edit Account</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="LogIn">Logout</a></li>
-                        
+                     
                 </ul>
             </div>
         </div>
