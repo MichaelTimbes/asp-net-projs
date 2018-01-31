@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Demo.Models;
 
+
 namespace Demo.Controllers
 {
     public class UserController : Controller
@@ -20,6 +21,11 @@ namespace Demo.Controllers
 
         // GET: User
         public async Task<IActionResult> Index()
+        {
+            return View(await _context.UserModel.ToListAsync());
+        }
+        // GET: User/UsersIndex
+        public async Task<IActionResult> UsersIndex()
         {
             return View(await _context.UserModel.ToListAsync());
         }
@@ -86,8 +92,9 @@ namespace Demo.Controllers
             {
                 _context.Add(userModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(UsersIndex));
             }
+
             return View(userModel);
         }
 
