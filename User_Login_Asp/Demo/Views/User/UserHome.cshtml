@@ -8,4 +8,12 @@
 <br>
 <p>@ViewData["Message"] @Html.DisplayFor(model => model.User_Name) !</p>
 
-<p>Signed In: @Html.DisplayFor(model => model.User_SignIn_Status)</p>
+@if (Model.User_SignIn_Status == true)
+{
+<!--<p>Signed In: @Html.DisplayFor(model => model.User_SignIn_Status)</p>-->
+<p>Signed In: True</p>
+}
+    else
+{
+<p>Signed In: False</p>
+}

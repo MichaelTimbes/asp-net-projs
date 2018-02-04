@@ -8,3 +8,4 @@
 /Users/michaeltimbes/Projects/asp-net-projs/User_Login_Asp/Demo/obj/Release/netcoreapp2.0/Demo.AssemblyInfo.cs
 /Users/michaeltimbes/Projects/asp-net-projs/User_Login_Asp/Demo/obj/Release/netcoreapp2.0/Demo.dll
 /Users/michaeltimbes/Projects/asp-net-projs/User_Login_Asp/Demo/obj/Release/netcoreapp2.0/Demo.pdb
+/Users/michaeltimbes/Projects/asp-net-projs/User_Login_Asp/Demo/obj/Release/netcoreapp2.0/Demo.csprojResolveAssemblyReference.cache
