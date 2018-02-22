@@ -29,6 +29,24 @@ namespace Demo.Controllers
         {
             return View(await _context.UserModel.ToListAsync());
         }
+        // GET: User/Details/?
+        public async Task<IActionResult> GoBackHome(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var userModel = await _context.UserModel
+                .SingleOrDefaultAsync(m => m.ID == id);
+            if (userModel == null)
+            {
+                return NotFound();
+            }
+
+            //return View(userModel);
+            return View("UserHome",userModel);
+        }
 
         // GET: User/UserHome/?User_Name=&User_Password=
         // Used at LogIn Screen, LINQ on User_Name and User_Password
@@ -38,7 +56,7 @@ namespace Demo.Controllers
 
             if(!String.IsNullOrEmpty(User_Name) && !String.IsNullOrEmpty(User_Password))
             {
-                userModel = userModel.Where(s => s.User_Name.Contains(User_Name) && 
+                userModel = userModel.Where(s => s.User_Name.Equals(User_Name) && 
                                             s.User_Password.Equals(User_Password));
             }
             if(userModel.Count() == 0){
@@ -88,11 +106,25 @@ namespace Demo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,User_Name,User_Password,User_SignIn_Status")] UserModel userModel)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(userModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(UsersIndex));
+                //return RedirectToAction(nameof(UsersIndex));
+                string UNAME = userModel.User_Name;
+                string UPASS = userModel.User_Password;
+                //return RedirectToAction(actionName: "UserHome", routeValues: new {User_Name = UNAME, User_Pass = UPASS });
+                //return RedirectToAction(actionName: "UserHome");
+                RedirectToAction(controllerName: "UserProfileController", actionName: "CreateWithUser", routeValues: new
+                {
+                    UserModelID = userModel.ID,
+                    UserProfileSummary = "",
+                    UserProfileStatusUpdate = "Hello World!"
+
+                });
+                return View("UserHome", userModel);
+
             }
 
             return View(userModel);
@@ -122,6 +154,7 @@ namespace Demo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,User_Name,User_Password,User_SignIn_Status")] UserModel userModel)
         {
+            
             if (id != userModel.ID)
             {
                 return NotFound();
@@ -145,9 +178,9 @@ namespace Demo.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(UserHome));
+                return RedirectToAction("UserHome", routeValues: new{User_Name =userModel.User_Name, User_Password= userModel.User_Password});
             }
-            return View(userModel);
+            return RedirectToAction("UserHome", routeValues: new { User_Name = userModel.User_Name, User_Password = userModel.User_Password });
         }
 
         // GET: User/Delete/5

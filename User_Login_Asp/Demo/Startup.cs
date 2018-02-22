@@ -23,8 +23,12 @@ namespace Demo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
             services.AddDbContext<UserContext>(options =>
             options.UseSqlite("Data Source=users.db"));
+            
+            services.AddDbContext<UserProfileContext>(options =>
+            options.UseSqlite("Data Source=userprofiles.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

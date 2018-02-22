@@ -4,6 +4,8 @@ namespace Demo.Models
 {
     public class UserContext : DbContext
     {
+       
+
         public UserContext(DbContextOptions<UserContext> options)
             : base(options)
         {

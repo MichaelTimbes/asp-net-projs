@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 
-namespace Demo.Migrations
+namespace Demo.Migrations.UserProfile
 {
-    [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(UserProfileContext))]
+    partial class UserProfileContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -33,7 +33,33 @@ namespace Demo.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("UserProfileID");
+
                     b.ToTable("UserModel");
+                });
+
+            modelBuilder.Entity("Demo.Models.UserProfile", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("UserModelID");
+
+                    b.Property<string>("UserProfileStatusUpdate");
+
+                    b.Property<string>("UserProfileSummary");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("UserProfile");
+                });
+
+            modelBuilder.Entity("Demo.Models.UserModel", b =>
+                {
+                    b.HasOne("Demo.Models.UserProfile")
+                        .WithMany("UserFriends")
+                        .HasForeignKey("UserProfileID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -1,16 +1,17 @@
 ﻿<Properties StartupConfiguration="{66E0A366-7727-46C4-9B1F-07A150C646B1}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Demo/Views/User/Details.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Demo/Startup.cs">
     <Files>
-      <File FileName="Demo/Views/Home/Index.cshtml" Line="1" Column="1" />
-      <File FileName="Demo/Views/User/Index.cshtml" Line="4" Column="38" />
+      <File FileName="Demo/Views/Shared/_Layout.cshtml" Line="10" Column="56" />
+      <File FileName="Demo/wwwroot/lib/bootstrap/dist/css/bootstrap.css" Line="5628" Column="27" />
+      <File FileName="Demo/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" Line="4971" Column="2" />
+      <File FileName="Demo/wwwroot/lib/bootstrap/dist/css/bootstrap-theme.css" Line="431" Column="21" />
       <File FileName="Demo/Startup.cs" Line="33" Column="35" />
-      <File FileName="Demo/Views/User/UserHome.cshtml" Line="14" Column="19" />
-      <File FileName="Demo/Views/User/Details.cshtml" Line="35" Column="59" />
-      <File FileName="Demo/Views/Shared/_Layout2.cshtml" Line="1" Column="1" />
-      <File FileName="Demo/Views/User/Edit.cshtml" Line="42" Column="46" />
+      <File FileName="Demo/Program.cs" Line="1" Column="1" />
+      <File FileName="Demo/wwwroot/css/site.css" Line="36" Column="1" />
+      <File FileName="Demo/appsettings.Development.json" Line="7" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

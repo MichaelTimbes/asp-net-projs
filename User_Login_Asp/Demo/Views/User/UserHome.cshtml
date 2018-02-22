@@ -6,14 +6,15 @@
 
 <h2>User Home</h2>
 <br>
-<p>@ViewData["Message"] @Html.DisplayFor(model => model.User_Name) !</p>
+<p>Welcome to your Home Page @ViewData["Message"] @Html.DisplayFor(model => model.User_Name)!</p>
 
 @if (Model.User_SignIn_Status == true)
 {
 <!--<p>Signed In: @Html.DisplayFor(model => model.User_SignIn_Status)</p>-->
-<p>Signed In: True</p>
+<p>You're Signed In</p>
 }
     else
 {
-<p>Signed In: False</p>
+<p>You're Not Signed In</p>
 }
+<a asp-area="" asp-controller="UserProfile" asp-action="LinkToProfileFromLayout" asp-route-id= "@Model.ID" >View Profile</a>

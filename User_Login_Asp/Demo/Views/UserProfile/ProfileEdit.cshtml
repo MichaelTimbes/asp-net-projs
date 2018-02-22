@@ -1,0 +1,57 @@
+﻿@using Demo.Models
+@model Tuple<UserModel,UserProfile>
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_Layout2";
+}
+
+<h4>UserProfile Edit Mode</h4>
+<h3>Current Profile</h3>
+<div>
+    <h4>UserProfile</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserModelID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserModelID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserProfileSummary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserProfileSummary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserProfileStatusUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserProfileStatusUpdate)
+        </dd>
+    </dl>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ProfEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <input type="hidden" asp-for="UserModelID" />
+            <div class="form-group">
+                <label asp-for="UserProfileSummary" class="control-label"></label>
+                <input asp-for="UserProfileSummary" class="form-control" />
+                <span asp-validation-for="UserProfileSummary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserProfileStatusUpdate" class="control-label"></label>
+                <input asp-for="UserProfileStatusUpdate" class="form-control" />
+                <span asp-validation-for="UserProfileStatusUpdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
