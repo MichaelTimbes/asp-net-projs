@@ -17,4 +17,12 @@
 {
 <p>You're Not Signed In</p>
 }
-<a asp-area="" asp-controller="UserProfile" asp-action="LinkToProfileFromLayout" asp-route-id= "@Model.ID" >View Profile</a>
+<!--<a asp-area="" asp-controller="UserProfile" asp-action="LinkToProfileFromLayout" asp-route-id= "@Model.ID" >View Profile</a>-->
+<a asp-area="" asp-controller="UserProfile" asp-action="LinkToProfileFromLayout" >View Profile</a>
+
+<form asp-controller= "User" asp-action="IndexSearch" >
+    
+  <input type="text" name="UserName">
+    <input type="submit" value="Search"/>
+    
+</form>

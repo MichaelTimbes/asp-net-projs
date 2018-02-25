@@ -1,0 +1,27 @@
+@model Demo.Models.UserModel
+
+@{
+    ViewData["Title"] = "User Details";
+    Layout = "_Layout2";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User_Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User_SignIn_Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User_SignIn_Status)
+        </dd>
+    </dl>
+</div>

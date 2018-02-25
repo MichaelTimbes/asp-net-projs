@@ -1,20 +1,16 @@
-﻿@using Demo.Models
-@model UserProfile
+﻿@model Demo.Models.UserProfile
 
 @{
-    ViewData["Title"] = "Profile";
-    Layout = "_Layout2";
+    ViewData["Title"] = "Details";
+    Layout = "_Layout3";
 }
-<!-- 
-This page is used to display a profile view. The edit action is based off of the UserProfile.ID 
-attribute. 
--->
+
+<h2>Details</h2>
+
 <div>
     <h4>UserProfile</h4>
-    <h3>View of Current Profile</h3>
     <hr />
     <dl class="dl-horizontal">
-        
         <dt>
             @Html.DisplayNameFor(model => model.UserProfileSummary)
         </dt>
@@ -30,4 +26,6 @@ attribute.
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-controller="User" asp-action="GoBackHome" asp-route-id="@Model.UserModelID">Home</a>
+</div>

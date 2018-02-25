@@ -1,6 +1,6 @@
-﻿@model Demo.Models.UserModel
+﻿@model Demo.Models.UserModel 
 
-<!-- This layout is used to have a different type of response depending on the Model.ID context
+<!--This layout is used to have a different type of response depending on the Model.ID context
      when a user is signed in.-->
 <!DOCTYPE html>
 <html>
@@ -34,10 +34,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="User" asp-action="GoBackHome" asp-route-id="@Model.ID">Home</a></li>
-                    <li><a asp-area="" asp-controller="User" asp-action="Details" asp-route-id="@Model.ID">Account</a></li>
-                    <li><a asp-area="" asp-controller="User" asp-action="Edit" asp-route-id="@Model.ID"> Edit Account</a></li>
-                    <li><a asp-area="" asp-controller="UserProfile" asp-action="LinkToProfileFromLayout" asp-route-id= "@Model.ID" >Profile</a></li>
+                    <li><a asp-area="" asp-controller="User" asp-action="GoBackHome" >Home</a></li>
+                    <li><a asp-area="" asp-controller="User" asp-action="Details" >Account</a></li>
+                    <li><a asp-area="" asp-controller="User" asp-action="Edit" > Edit Account</a></li>
+                    <li><a asp-area="" asp-controller="UserProfile" asp-action="LinkToProfileFromLayout"  >Profile</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="LogIn">Logout</a></li>
                      
                 </ul>

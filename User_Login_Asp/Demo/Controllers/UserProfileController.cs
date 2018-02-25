@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Demo.Models;
 using System.Diagnostics.Contracts;
+using Microsoft.AspNetCore.Http;
 
 namespace Demo.Controllers
 {
@@ -14,6 +15,7 @@ namespace Demo.Controllers
     {
         private readonly UserProfileContext _context;
         private readonly UserContext _context2;
+        const string SessionUserID = "_UserID";
 
         public UserProfileController(UserProfileContext context, UserContext context2)
         {
@@ -26,6 +28,7 @@ namespace Demo.Controllers
         {
             return View(await _context.UserProfile.ToListAsync());
         }
+
 
         // GET: UserProfile/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -55,6 +58,10 @@ namespace Demo.Controllers
         [HttpGet]
         public async Task<IActionResult> LinkToProfileFromLayout(int? id)
         {
+            if (id == null)
+            {
+                id = (int)HttpContext.Session.GetInt32(SessionUserID);
+            }
             // Find a possible userProfile if it exists
             var userProfile = await _context.UserProfile.SingleOrDefaultAsync(m => m.UserModelID == (int)id );
             var UserVal = await _context2.UserModel.SingleOrDefaultAsync(n => n.ID == (int)id);

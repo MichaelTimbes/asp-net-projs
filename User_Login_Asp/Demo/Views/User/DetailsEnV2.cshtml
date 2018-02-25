@@ -1,13 +1,11 @@
-﻿@model IEnumerable<Demo.Models.UserModel>
-<!-- Index Page to see what users are on the current database but without functionality to
-    delete or edit users-->
+@model IEnumerable<Demo.Models.UserModel>
+
 @{
-    ViewData["Title"] = "Index";
-    Layout = "_Layout2";
+    ViewData["Title"] = "Search Results";
+    Layout = "_Layoutv2";
 }
 
-<h2>Index</h2>
-<p> List of Users:</p>
+<h2>Details</h2>
 
 <table class="table">
     <thead>
@@ -27,7 +25,6 @@
         </tr>
     </thead>
     <tbody>
-        
 @foreach (var item in Model) {
         <tr>
             <td>
@@ -39,11 +36,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.User_SignIn_Status)
             </td>
-           <!-- <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>-->
+            <td>
+                
+                <a asp-action="DetailsBasic" asp-route-id="@item.ID">Details</a> 
+
+            </td>
         </tr>
 }
     </tbody>

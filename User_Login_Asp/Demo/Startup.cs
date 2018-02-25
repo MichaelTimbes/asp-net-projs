@@ -29,6 +29,18 @@ namespace Demo
             
             services.AddDbContext<UserProfileContext>(options =>
             options.UseSqlite("Data Source=userprofiles.db"));
+
+            // Adds a default in-memory implementation of IDistributedCache.
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+               // options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.Name = ".DemoApp.Session";
+                options.Cookie.HttpOnly = true;
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,14 +55,20 @@ namespace Demo
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            // For Session Context
+            app.UseSession();
+
+            // For Partial Views and Layouts
             app.UseStaticFiles();
 
+            // Default Route
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

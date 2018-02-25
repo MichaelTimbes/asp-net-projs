@@ -12,6 +12,8 @@ namespace Demo.Controllers
     {
         public IActionResult Index()
         {
+            // Clear Session Information
+            HttpContext.Session.Clear();
             return View();
         }
 
@@ -31,6 +33,9 @@ namespace Demo.Controllers
         public IActionResult LogIn()
         {
             ViewData["Message"] = "User LogIn Page.";
+
+            // Clear Session Information
+            HttpContext.Session.Clear();
 
             return View();
         }
