@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.User_SignIn_Status)
             </td>
             <td>
-                
+                <a asp-controller="UserProfile" asp-action="ProfileView"  asp-route-id="@item.ID">Profile</a> |
                 <a asp-action="DetailsBasic" asp-route-id="@item.ID">Details</a> 
-
+                <a asp-controller="UserProfile" asp-action="AddFriend" asp-route-id="@item.ID">Add as Friend</a>
             </td>
         </tr>
 }

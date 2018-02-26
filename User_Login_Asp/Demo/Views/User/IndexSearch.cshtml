@@ -37,9 +37,7 @@
                 @Html.DisplayFor(modelItem => item.User_SignIn_Status)
             </td>
             <td>
-                
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> 
-
+                <a asp-area="" asp-controller="UserProfile" asp-action="LinkToProfileFromLayout"  asp-route-id="@item.UserProfileID">Profile</a>
             </td>
         </tr>
 }

@@ -15,20 +15,80 @@ namespace Demo.Controllers
     {
         private readonly UserProfileContext _context;
         private readonly UserContext _context2;
+        private readonly FriendContext _context3;
         const string SessionUserID = "_UserID";
 
-        public UserProfileController(UserProfileContext context, UserContext context2)
+        public UserProfileController(UserProfileContext context, UserContext context2, FriendContext context3)
         {
             _context = context;
             _context2 = context2;
+            _context3 = context3;
         }
+        /* AddFriend Method
+         * Accetps an ID which is a userModel ID and is the friend to be added.
+         * Adds the friend to the current session user.
+        */
+        public async Task<IActionResult> AddFriend(int? id)
+        {
+            // First Find the Friend
+            var friend = _context2.UserModel.Where(m => m.ID == id);
+            // Handle if not Found
+            if (friend != null)
+            {
+                // Extract Session UserID
+                var targetID = HttpContext.Session.GetInt32(SessionUserID);
+                // Find the UserProfile in Database based on UserID
+                var SessionUser = _context2.UserModel.Where(m => m.ID == targetID);
 
+                // Building New Friendship
+                // UserA is the current session user
+                var friendship = new FriendModel
+                {
+                    User_NameA = SessionUser.First().User_Name,
+                    User_NameB = friend.First().User_Name,
+                    UserAcceptA = true,
+                    UserProfileIDA = SessionUser.First().UserProfileID,
+                    UserProfileIDB = friend.First().UserProfileID
+                };
+
+                // Add Friendship
+                _context3.Add(friendship);
+
+                // Save Friendship
+                await _context3.SaveChangesAsync();
+
+                return RedirectToAction(actionName:"LinkToProfileFromLayout",routeValues: new {id=friend.First().ID});
+
+            }
+            // Return View of Error
+
+            return RedirectToAction(actionName: "LinkToProfileFromLayout");
+        }
         // GET: UserProfile
         public async Task<IActionResult> Index()
         {
             return View(await _context.UserProfile.ToListAsync());
         }
 
+        // GET: UserProfile/Details/5
+        [HttpGet]
+        public async Task<IActionResult> ProfileView(int? id)
+        {
+            if (id == null)
+            {
+                Console.WriteLine("Id is null");
+                return NotFound();
+            }
+
+            var userProfile = await _context.UserProfile
+                                            .SingleOrDefaultAsync(m => m.UserModelID == id);
+            if (userProfile == null)
+            {
+                return NotFound();
+            }
+
+            return View(userProfile);
+        }
 
         // GET: UserProfile/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -65,6 +125,7 @@ namespace Demo.Controllers
             // Find a possible userProfile if it exists
             var userProfile = await _context.UserProfile.SingleOrDefaultAsync(m => m.UserModelID == (int)id );
             var UserVal = await _context2.UserModel.SingleOrDefaultAsync(n => n.ID == (int)id);
+
             // If no Match
             if (userProfile == null)
             {

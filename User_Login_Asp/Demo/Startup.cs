@@ -30,6 +30,9 @@ namespace Demo
             services.AddDbContext<UserProfileContext>(options =>
             options.UseSqlite("Data Source=userprofiles.db"));
 
+            services.AddDbContext<FriendContext>(options =>
+            options.UseSqlite("Data Source=friendships.db"));
+
             // Adds a default in-memory implementation of IDistributedCache.
             services.AddDistributedMemoryCache();
 

@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 
-namespace Demo.Migrations.UserProfile
+namespace Demo.Migrations.Friend
 {
-    [DbContext(typeof(UserProfileContext))]
-    partial class UserProfileContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(FriendContext))]
+    partial class FriendContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -18,20 +18,26 @@ namespace Demo.Migrations.UserProfile
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125");
 
-            modelBuilder.Entity("Demo.Models.UserProfile", b =>
+            modelBuilder.Entity("Demo.Models.FriendModel", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("UserModelID");
+                    b.Property<bool>("UserAcceptA");
 
-                    b.Property<string>("UserProfileStatusUpdate");
+                    b.Property<bool>("UserAcceptB");
 
-                    b.Property<string>("UserProfileSummary");
+                    b.Property<int>("UserProfileIDA");
+
+                    b.Property<int>("UserProfileIDB");
+
+                    b.Property<string>("User_NameA");
+
+                    b.Property<string>("User_NameB");
 
                     b.HasKey("ID");
 
-                    b.ToTable("UserProfile");
+                    b.ToTable("FriendModel");
                 });
 #pragma warning restore 612, 618
         }

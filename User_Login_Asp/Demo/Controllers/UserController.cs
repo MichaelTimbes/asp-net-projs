@@ -13,11 +13,14 @@ namespace Demo.Controllers
     public class UserController : Controller
     {
         private readonly UserContext _context;
+        private readonly FriendContext _context2;
+
         const string SessionUserID = "_UserID";
 
-        public UserController(UserContext context)
+        public UserController(UserContext context, FriendContext context2)
         {
             _context = context;
+            _context2 = context2;
         }
 
         // GET: User
@@ -39,6 +42,7 @@ namespace Demo.Controllers
 
             return View(viewName:"DetailsEnV2", model: await UserFound.ToListAsync());
         }
+
 
         // GET: User/UsersIndex
         // Alternate View of the Users without access to edit and details.

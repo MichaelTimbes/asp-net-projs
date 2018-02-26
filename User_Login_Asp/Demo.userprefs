@@ -1,8 +1,11 @@
 ﻿<Properties StartupConfiguration="{66E0A366-7727-46C4-9B1F-07A150C646B1}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Demo/Controllers/UserController.cs">
     <Files>
-      <File FileName="Demo/Controllers/UserProfileController.cs" Line="71" Column="17" />
-      <File FileName="Demo/Controllers/UserController.cs" Line="88" Column="90" />
+      <File FileName="Demo/Controllers/UserProfileController.cs" Line="108" Column="38" />
+      <File FileName="Demo/Controllers/UserController.cs" Line="59" Column="19" />
+      <File FileName="Demo/Controllers/FriendController.cs" Line="53" Column="38" />
+      <File FileName="Demo/Views/Friend/FriendSearch.cshtml" Line="11" Column="25" />
+      <File FileName="Demo/Views/User/UserHome.cshtml" Line="9" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" ActiveRuntime="Mono 5.8.0.123 (38502063cac)" />

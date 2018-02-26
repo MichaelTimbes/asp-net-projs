@@ -1,0 +1,41 @@
+@model IEnumerable<Demo.Models.FriendModel>
+
+@{
+    ViewData["Title"] = "Friend Search";
+    Layout = "_Layoutv2";
+}
+
+<h2>Index</h2>
+
+<p>
+    @ViewData["Message"]
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+                
+                <th>
+                    @Html.DisplayNameFor(model => model.User_NameA)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User_NameB)
+                </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.User_NameA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User_NameB)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

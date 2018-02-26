@@ -10,9 +10,10 @@ using System;
 namespace Demo.Migrations.UserProfile
 {
     [DbContext(typeof(UserProfileContext))]
-    partial class UserProfileContextModelSnapshot : ModelSnapshot
+    [Migration("20180225170159_UserFriendList")]
+    partial class UserFriendList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
