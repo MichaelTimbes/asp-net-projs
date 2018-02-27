@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using AXCEX_ONLINE.Services;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 namespace AXCEX_ONLINE.Controllers
 {
@@ -24,6 +25,8 @@ namespace AXCEX_ONLINE.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        const string SessionUserName = "_Name";
+        const string SessionUserId = "_UID";
 
         public EmployeeController(
             ApplicationDbContext context,
@@ -45,6 +48,17 @@ namespace AXCEX_ONLINE.Controllers
             return View(await _context.EmployeeModel.ToListAsync());
         }
 
+        // GET Employee/EmployeeHome/?
+        [HttpGet]
+        public IActionResult EmployeeHome()
+        {
+            // Extract UserID
+            string refID = HttpContext.Session.GetString(SessionUserId);
+
+            // Pull Profile and Return Model
+            return View(_context.EmployeeModel.Where(m=>m.Id == refID));
+        }
+        
         // GET: EmployeeModels/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -89,6 +103,9 @@ namespace AXCEX_ONLINE.Controllers
 
                 if (result.Succeeded)
                 {
+                    // Session Information
+                    HttpContext.Session.SetString(SessionUserName,TEMP_EMP.UserName);
+                    HttpContext.Session.SetString(SessionUserId, TEMP_EMP.Id);
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(TEMP_EMP);

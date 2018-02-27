@@ -93,7 +93,14 @@ namespace AXCEX_ONLINE.Controllers
 
         private IActionResult RedirectToLocal(string returnUrl)
         {
-            throw new NotImplementedException();
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction(nameof(AdminController.Index), "AdminHome");
+            }
         }
 
         // GET: Admin
