@@ -9,6 +9,13 @@ namespace AXCEX_ONLINE.Models
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
+        // To be set by Admin for Verification
+        public enum AccountStatus
+        {
+            Submitted,
+            Approved,
+            Rejected
+        }
 
     }
 }

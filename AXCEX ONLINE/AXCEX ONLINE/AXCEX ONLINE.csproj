@@ -5,6 +5,17 @@
     <UserSecretsId>aspnet-AXCEX_ONLINE-1B936534-EE7E-48ED-9A78-DB2738BBC419</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20180226053016_EmployeeModel_000.cs" />
+    <Compile Remove="Data\Migrations\20180226053016_EmployeeModel_000.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180226053131_EmployeeModel_001.cs" />
+    <Compile Remove="Data\Migrations\20180226053131_EmployeeModel_001.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180226053323_EmployeeModel_002.cs" />
+    <Compile Remove="Data\Migrations\20180226053323_EmployeeModel_002.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180226053624_EmployeeModel_004.cs" />
+    <Compile Remove="Data\Migrations\20180226053624_EmployeeModel_004.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />

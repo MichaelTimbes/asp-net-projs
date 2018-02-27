@@ -4,10 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AXCEX_ONLINE.Models.AccountViewModels
+namespace AXCEX_ONLINE.Models.EmployeeViewModels
 {
     public class RegisterViewModel
     {
+        // Email will be the username
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace AXCEX_ONLINE.Models
 {
-    // Inherits From Application User for Authentication
-    public class AdminModel : ApplicationUser
+    public class CustomerModel : ApplicationUser
     {
         public int ID { get; set; }
-        public string ADMIN_NAME { get; set; }
+        public string CUSTOMER_NAME { get; set; }
+        public int CUSTOMER_ACCOUNT { get; set; }
 
     }
 }

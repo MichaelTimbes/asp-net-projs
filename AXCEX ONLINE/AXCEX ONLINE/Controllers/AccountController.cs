@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using AXCEX_ONLINE.Models;
-using AXCEX_ONLINE.Models.AccountViewModels;
+using AXCEX_ONLINE.Models.EmployeeViewModels;
 using AXCEX_ONLINE.Services;
 
 namespace AXCEX_ONLINE.Controllers
