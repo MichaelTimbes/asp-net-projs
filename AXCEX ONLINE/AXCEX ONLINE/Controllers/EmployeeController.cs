@@ -13,10 +13,11 @@ using Microsoft.AspNetCore.Identity;
 using AXCEX_ONLINE.Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication;
 
 namespace AXCEX_ONLINE.Controllers
 {
-    [Authorize(Roles = "PowerUser")]
+    [Authorize(Roles = "EmployeeUser")]
 
     public class EmployeeController : Controller
     {
@@ -42,13 +43,67 @@ namespace AXCEX_ONLINE.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> EmployeeLogin(string returnUrl = null)
+        {
+            // Clear the existing external cookie to ensure a clean login process
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+            // Be sure to clear the cache too!
+            HttpContext.Session.Clear();
+
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EmployeeLogin(EMPLoginViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                if (result.Succeeded)
+                {
+                    // Extract User for Session Seed
+                    var Usess = await _context.EmployeeModel.FirstOrDefaultAsync((m => m.Email == model.Email));
+                    // Set Context
+                    HttpContext.Session.SetString(SessionUserId,Usess.Id);
+                    HttpContext.Session.SetString(SessionUserName, Usess.UserName);
+
+                    _logger.LogInformation("User logged in.");
+                    return RedirectToLocal(returnUrl);
+                }
+                if (result.RequiresTwoFactor)
+                {
+                    return RedirectToAction(nameof(AccountController.LoginWith2fa), new { returnUrl, model.RememberMe });
+                }
+                if (result.IsLockedOut)
+                {
+                    _logger.LogWarning("User account locked out.");
+                    return RedirectToAction(nameof(AccountController.Lockout));
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return View(model);
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+        
         // GET: EmployeeModels
         public async Task<IActionResult> Index()
         {
             return View(await _context.EmployeeModel.ToListAsync());
         }
 
-        // GET Employee/EmployeeHome/?
+        // GET Employee/EmployeeHome/
         [HttpGet]
         public IActionResult EmployeeHome()
         {
@@ -76,6 +131,7 @@ namespace AXCEX_ONLINE.Controllers
 
             return View(employeeModel);
         }
+
         [HttpGet]
         [AllowAnonymous]
         public IActionResult RegisterEmployee(string returnUrl = null)
@@ -182,6 +238,8 @@ namespace AXCEX_ONLINE.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles ="EmployeeUser")]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("ID,EMP_FNAME,EMP_LNAME,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] EmployeeModel employeeModel)
         {
