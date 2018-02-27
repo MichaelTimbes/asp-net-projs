@@ -80,7 +80,7 @@ namespace AXCEX_ONLINE.Controllers
                 {
                     EMP_FNAME = model.FNAME,
                     EMP_LNAME = model.LNAME,
-                    UserName = model.Email,
+                    UserName = model.FNAME + " " + model.LNAME,
                     Email = model.Email
                 };
                 var result = await _userManager.CreateAsync(TEMP_EMP, model.Password);

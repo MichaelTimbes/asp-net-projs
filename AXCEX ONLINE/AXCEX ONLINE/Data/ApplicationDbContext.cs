@@ -24,5 +24,7 @@ namespace AXCEX_ONLINE.Data
         }
 
         public DbSet<AXCEX_ONLINE.Models.EmployeeModel> EmployeeModel { get; set; }
+
+        public DbSet<AXCEX_ONLINE.Models.AdminModel> AdminModel { get; set; }
     }
 }
