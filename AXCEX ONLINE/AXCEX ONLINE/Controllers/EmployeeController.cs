@@ -15,6 +15,8 @@ using Microsoft.Extensions.Logging;
 
 namespace AXCEX_ONLINE.Controllers
 {
+    [Authorize(Roles = "PowerUser")]
+
     public class EmployeeController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -214,6 +216,8 @@ namespace AXCEX_ONLINE.Controllers
 
         // POST: EmployeeModels/Delete/5
         [HttpPost, ActionName("Delete")]
+        // Only An Admin can delete an Employee
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {

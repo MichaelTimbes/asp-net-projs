@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AXCEX_ONLINE.Models.EmployeeViewModels
-{
+namespace AXCEX_ONLINE.Models.AccountViewModels
+{ 
     public class LoginWith2faViewModel
     {
         [Required]
