@@ -17,14 +17,14 @@ namespace NetCoreSocial.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
 
 
-        /*         CONTROLLOER INITIALIZE                             */
+        /*         CONTROLLER INITIALIZE                             */
         public UserController(UserContext context,UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
         }
-        /*        END  CONTROLLOER INITIALIZE                             */
+        /*        END  CONTROLLER INITIALIZE                             */
 
 
         /* USER HOME REGION
@@ -43,9 +43,9 @@ namespace NetCoreSocial.Controllers
             {
                 var ActiveUser = _userManager.GetUserId(User);
                 var userModel = _context.Users.Where(m => m.Id == ActiveUser);
-                return View(userModel);
+                return View(userModel.First());
             }
-            // REDIRECT TO LOG IN
+            // Redirect to user login if the user is not signed in
             return View();
         }
 
@@ -59,10 +59,46 @@ namespace NetCoreSocial.Controllers
 
         #region USER_LOGIN
 
+        [HttpGet] 
+        public IActionResult Login(string returnURL = null )
+        {
+            ViewData["ReturnUrl"] = returnURL;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginUserVC model, string returnURL=null)
+        {
+            ViewData["ReturnUrl"] = returnURL;
+            if (ModelState.IsValid)
+            {
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, lockoutOnFailure: false);
+                if (result.Succeeded)
+                {
+                    
+                    return RedirectToAction(actionName:"UserHome");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return View(model);
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
         #endregion USER_LOGIN
 
-        /*          */
+        /* REGISTER USER REGION
+         * Presents a form to register a user.
+         * Handles secure user creation.
+        */
         #region REGISTER_USR
+        // GET: /User/RegisterUser
         public IActionResult RegisterUser(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -70,6 +106,7 @@ namespace NetCoreSocial.Controllers
 
         }
 
+        // POST: /User/RegisterUser/{RegisterUserVC&returnUrl}
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -91,6 +128,11 @@ namespace NetCoreSocial.Controllers
             // Model State is in valid
             return View(model);
         }
+        #endregion REGISTER_USR
+
+        /*                                              HELPER FUNCTIONS                                        */
+        #region HELPER_REGION
+
         private IActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -102,7 +144,10 @@ namespace NetCoreSocial.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
-        #endregion REGISTER_USR
+
+    #endregion HELPER_REGION
+
+
 
 
 

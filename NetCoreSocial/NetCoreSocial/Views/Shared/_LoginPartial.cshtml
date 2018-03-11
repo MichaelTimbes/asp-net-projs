@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using NetCoreSocial.Models
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="RegisterUser">Register</a>
+        </li>
+            
+        <li>
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+            </li>
+    </ul>
+

@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{16621A6C-D390-455C-AD32-FB764AC1036B}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NetCoreSocial/Views/User/Login.cshtml">
+    <Files>
+      <File FileName="NetCoreSocial/Controllers/UserController.cs" Line="18" Column="9" />
+      <File FileName="NetCoreSocial/Views/User/UserHome.cshtml" Line="8" Column="1" />
+      <File FileName="NetCoreSocial/Views/User/Login.cshtml" Line="17" Column="50" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.NetCoreSocial PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

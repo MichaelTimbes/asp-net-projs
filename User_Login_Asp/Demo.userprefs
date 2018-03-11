@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Demo/Controllers/UserController.cs">
     <Files>
       <File FileName="Demo/Controllers/UserProfileController.cs" Line="108" Column="38" />
-      <File FileName="Demo/Controllers/UserController.cs" Line="59" Column="19" />
+      <File FileName="Demo/Controllers/UserController.cs" Line="8" Column="33" />
       <File FileName="Demo/Controllers/FriendController.cs" Line="53" Column="38" />
       <File FileName="Demo/Views/Friend/FriendSearch.cshtml" Line="11" Column="25" />
       <File FileName="Demo/Views/User/UserHome.cshtml" Line="9" Column="31" />
